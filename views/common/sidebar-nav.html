@@ -1,0 +1,30 @@
+<div class="sidebar" ng-controller="sidebarCtrl as vm">
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <li class="nav-title">
+        Principal  
+      </li>
+ 
+      <li class="nav-item" ng-if="vm.esAdmin">
+        <a class="nav-link" ui-sref-active="active" ui-sref="app.maestros.pagareList"><i class="fa fa-pie-chart" aria-hidden="true"></i> Escritorio </a>
+      </li>
+      <li class="nav-item" ng-if="vm.esAdmin">
+        <a class="nav-link" ui-sref-active="active" ui-sref="app.maestros.recordatorios"><i class="fa fa-archive" aria-hidden="true"></i> Categorias </a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link" ui-sref-active="active" ui-sref="app.main"><i class="fa fa-calendar" aria-hidden="true"></i>Transacciones </a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link" ui-sref-active="active" ui-sref="app.mains"><i class="fa fa-credit-card" aria-hidden="true"></i>Cuentas </a>
+      </li>
+      <li class="nav-title">
+        Usuario  
+      </li>
+      <li class="nav-item" ng-if="vm.esAdmin">
+        <a class="nav-link" ui-sref-active="active" ui-sref="app.maestros.clientes"><i class="fa fa-user" aria-hidden="true"></i> Perfil </a>
+      </li>
+     
+   
+    </ul>
+  </nav>
+</div>
