@@ -111,11 +111,11 @@
             },
             {
               className: 'col-md-6',
-              key: 'categoriaDenominacion',
+              key: 'transaccionObservacion',
               type: 'input',
               templateOptions: {
                 type: 'input',
-                placeholder: 'Denominación',
+                placeholder: 'Observación',
                 required: true
               }
             },
@@ -145,6 +145,8 @@
               .then(function(result) {
                   if (result.success) {
                       console.log('result.data :>> ', result.data);
+                      result.data.transaccionFecha = moment(result.data.transaccionFecha).toDate()
+                      result.data.transaccionMonto = +result.data.transaccionMonto
                       vm.transaccion = result.data;
                   } else {
                      console.log('Error en findTransaccionById');

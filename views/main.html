@@ -40,7 +40,7 @@
         </div>
          
           <div class="card-body  clearfix">
-            <canvas id="myChart" width="800" height="800"></canvas>
+            <canvas id="myChart" width="800" height="900"></canvas>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@
         <div class="card">
           <div class="card-header  text-white bg-info">
             <i class="fa fa-align-justify"></i> Gastos
-            <button type="button" ng-click="vm.goTo()" class="btn btn-minimize  btn-light float-right"
+            <button type="button"  ui-sref="app.maestros.transaccionRegistrar" class="btn btn-minimize  btn-light float-right"
                 uib-popover="Registrar nuevo" popover-trigger="'mouseenter'" popover-placement="auto left">
                 <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Gasto
             </button>
@@ -62,34 +62,20 @@
                       <th> Fecha</th>
                       <th> Categoria</th>
                       <th> Monto</th>
+                      <!-- <th> Monto</th> -->
                   </tr>
               </thead>
               <tbody>
-                  <tr >
-                      <td>03/03/22 </td>
-                      <td>Salud</td>
-                      <td>550.000</td>
-                  </tr>
-                  <tr >
-                      <td>08/03/22 </td>
-                      <td>Transporte</td>
-                      <td>800.000</td>
-                  </tr>
-                  <tr >
-                      <td>10/03/22 </td>
-                      <td>Restaurantes</td>
-                      <td>350.000</td>
-                  </tr>
-                  <tr >
-                      <td>15/03/22 </td>
-                      <td>Regalos</td>
-                      <td>200.000</td>
-                  </tr>
-                  <tr >
-                      <td>16/03/22 </td>
-                      <td>Tiempo Libre</td>
-                      <td>600.000</td>
-                  </tr>
+                <tr ng-repeat="c in vm.transacciones">
+                  <td text-align="center" >
+                      <a class="text-info" ui-sref="app.maestros.transaccionEditar({ id: c.transaccionId })" >{{c.transaccionFecha | date:'dd/MM/yyyy'}}</a>
+                  </td>
+                  <td>{{c.categoriaDenominacion}}</td>
+                  <td>{{c.transaccionMonto | number:0}}</td>
+                  <!-- <td>
+                      <button ng-click="vm.eliminar(c.transaccionId)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                  </td> -->
+              </tr>
                 
               </tbody>
             
