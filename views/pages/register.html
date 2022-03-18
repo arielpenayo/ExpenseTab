@@ -9,13 +9,13 @@
               <img class="img-fluid" src="img/logo-completo.png"  id="icon" alt="User Icon"/>
             </div>
             <h1 class="text-center" >Registrarse</h1>
-            <p class="text-muted">Crea tú cuenta</p>
+            <!-- <p class="text-muted">Crea tú cuenta</p> -->
             <form class="form-signin" ng-submit="vm.registrar(vm.user)" novalidate name="vm.userForm">
               
               <formly-form model="vm.user" fields="vm.userFields" novalidate>
               </formly-form>
               
-              <button type="button" class="btn btn-block btn-success">Crear Cuenta</button>
+              <button type="submit" class="btn btn-block btn-success">Crear Cuenta</button>
               <!-- <button class="btn btn-primary mb-3" type="submit" ng-disabled="vm.userForm.$invalid">Iniciar sesión</button> -->
               
           </form>

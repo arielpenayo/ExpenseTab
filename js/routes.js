@@ -171,66 +171,7 @@ angular
           label: 'Maestros',
         }
       })
-      .state('app.maestros.clientes', {
-        url: '/clientes',
-        templateUrl: 'views/clientes.html',
-        controller: 'clientesCtrl',
-        controllerAs: 'vm',
-        //page title goes here
-        ncyBreadcrumb: {
-          label: 'Clientes',
-        },
-        //page subtitle goes here
-        // params: { subtitle: 'Welcome to ROOT powerfull Bootstrap & AngularJS UI Kit' },
-        resolve: {
-          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-            // you can lazy load controllers
-            return $ocLazyLoad.load({
-              files: ['js/controllers/clientesCtrl.js']
-            });
-          }]
-        }
-      })
-      .state('app.maestros.clienteRegistrar', {
-        url: '/cliente-registrar',
-        templateUrl: 'views/cliente-form.html',
-        controller: 'clienteFormCtrl',
-        controllerAs: 'vm',
-        //page title goes here
-        ncyBreadcrumb: {
-          label: 'Registrar cliente',
-        },
-        //page subtitle goes here
-        params: { subtitle: 'Registrar cliente' },
-        resolve: {
-          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-            // you can lazy load controllers
-            return $ocLazyLoad.load({
-              files: ['js/controllers/clienteFormCtrl.js']
-            });
-          }]
-        }
-      })
-      .state('app.maestros.clienteEditar', {
-        url: '/cliente-editar/:id',
-        templateUrl: 'views/cliente-form.html',
-        controller: 'clienteFormCtrl',
-        controllerAs: 'vm',
-        //page title goes here
-        ncyBreadcrumb: {
-          label: 'Editar cliente',
-        },
-        //page subtitle goes here
-        params: { subtitle: 'Editar cliente' },
-        resolve: {
-          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
-            // you can lazy load controllers
-            return $ocLazyLoad.load({
-              files: ['js/controllers/clienteFormCtrl.js']
-            });
-          }]
-        }
-      })
+
      
 
       .state('appSimple', {
@@ -348,7 +289,165 @@ angular
           }]
         }
       })
- 
+      .state('app.maestros.categorias', {
+        url: '/categorias',
+        templateUrl: 'views/categorias.html',
+        controller: 'categoriasCtrl',
+        controllerAs: 'vm',
+        ncyBreadcrumb: {
+          label: 'Categorías',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/categoriasCtrl.js']
+            });
+          }]
+        }
+      })
+      .state('app.maestros.categoriaRegistrar', {
+        url: '/categoria-registrar',
+        templateUrl: 'views/categoria-form.html',
+        controller: 'categoriaFormCtrl',
+        controllerAs: 'vm',
+        params: { subtitle: 'Registrar Categoría' },
+        ncyBreadcrumb: {
+          label: 'Registrar Categoría',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/categoriaFormCtrl.js']
+            });
+          }]
+        }
+      })
+      .state('app.maestros.categoriaEditar', {
+        url: '/categoria-editar/:id',
+        templateUrl: 'views/categoria-form.html',
+        controller: 'categoriaFormCtrl',
+        controllerAs: 'vm',
+        params: { subtitle: 'Editar Categoría' },
+        ncyBreadcrumb: {
+          label: 'Editar Categoría',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/categoriaFormCtrl.js']
+            });
+          }]
+        }
+      })
+      .state('app.maestros.cuentas', {
+        url: '/cuentas',
+        templateUrl: 'views/cuentas.html',
+        controller: 'cuentasCtrl',
+        controllerAs: 'vm',
+        ncyBreadcrumb: {
+          label: 'Cuentas',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/cuentasCtrl.js']
+            });
+          }]
+        }
+      })
+      .state('app.maestros.cuentaRegistrar', {
+        url: '/cuenta-registrar',
+        templateUrl: 'views/cuenta-form.html',
+        controller: 'cuentaFormCtrl',
+        controllerAs: 'vm',
+        params: { subtitle: 'Registrar Cuenta' },
+        ncyBreadcrumb: {
+          label: 'Registrar Cuenta',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/cuentaFormCtrl.js']
+            });
+          }]
+        }
+      })
+      .state('app.maestros.cuentaEditar', {
+        url: '/cuenta-editar/:id',
+        templateUrl: 'views/cuenta-form.html',
+        controller: 'cuentaFormCtrl',
+        controllerAs: 'vm',
+        params: { subtitle: 'Editar Cuenta' },
+        ncyBreadcrumb: {
+          label: 'Editar Cuenta',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/cuentaFormCtrl.js']
+            });
+          }]
+        }
+      })
+      .state('app.maestros.transacciones', {
+        url: '/transacciones',
+        templateUrl: 'views/transacciones.html',
+        controller: 'transaccionesCtrl',
+        controllerAs: 'vm',
+        ncyBreadcrumb: {
+          label: 'Transacciones',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/transaccionesCtrl.js']
+            });
+          }]
+        }
+      })
+      .state('app.maestros.transaccionRegistrar', {
+        url: '/transaccion-registrar',
+        templateUrl: 'views/transaccion-form.html',
+        controller: 'transaccionFormCtrl',
+        controllerAs: 'vm',
+        params: { subtitle: 'Registrar Transacción' },
+        ncyBreadcrumb: {
+          label: 'Registrar Transacción',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/transaccionFormCtrl.js']
+            });
+          }]
+        }
+      })
+      .state('app.maestros.transaccionEditar', {
+        url: '/transaccion-editar/:id',
+        templateUrl: 'views/transaccion-form.html',
+        controller: 'transaccionFormCtrl',
+        controllerAs: 'vm',
+        params: { subtitle: 'Editar  Transacción' },
+        ncyBreadcrumb: {
+          label: 'Editar  Transacción',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/transaccionFormCtrl.js']
+            });
+          }]
+        }
+      })
     
 
   }]);

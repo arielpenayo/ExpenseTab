@@ -55,7 +55,7 @@
 
         vm.login = function (user) {
             $state.go('app.main');
-            return false
+            // return false
 
             var userCopy = angular.copy(user);
             var hash = md5.createHash(userCopy.password);

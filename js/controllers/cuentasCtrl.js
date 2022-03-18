@@ -3,21 +3,21 @@
 
     angular
         .module('app')
-        .controller('clientesCtrl', clientesCtrl)
+        .controller('cuentasCtrl', cuentasCtrl)
 
-    clientesCtrl.$inject = ['dataService','toastr','$scope','$uibModal'];
+    cuentasCtrl.$inject = ['dataService','toastr','$scope','$uibModal','$stateParams'];
 
-    function clientesCtrl(dataService,toastr,$scope,$uibModal) {
+    function cuentasCtrl(dataService,toastr,$scope,$uibModal,$stateParams) {
         /* jshint validthis:true */
-        var vm = this;
-        var dialog;
-
+        const vm = this;
+        let dialog = {};
+        vm.cuentas = []
 
         activate();
 
-        vm.eliminar = function(clienteId) {
+        vm.eliminar = function(cuentaUsuarioId) {
 			var datos = {
-				clienteId: clienteId
+				cuentaUsuarioId: cuentaUsuarioId
 			};
 
 			dialog = $uibModal.open({
@@ -38,17 +38,17 @@
 
 
 			vm.confirmar = confirmar;
-			var mensaje = 'Cliente eliminado con éxito!';
+			var mensaje = 'Categoría eliminada con éxito!';
 			vm.titulo = 'Pedido de confirmación';
 
-            vm.mensaje = 'Deseas eliminar el Cliente?';
+            vm.mensaje = 'Deseas eliminar la Categoría?';
 			
 			
 			function confirmar() {
                 vm.dataSaving = true;
                 
 				return dataService
-					.delete('cliente', datos.clienteId)
+					.delete('categoria', datos.cuentaUsuarioId)
 					.then(function(result) {
 						if (result.success) { 
 
@@ -72,17 +72,17 @@
 		}
 
         function activate() { 
-            getClientes();
+            getCuentasUsuario();
         }
 
-        function getClientes(filtro) {
+        function getCuentasUsuario() {
             vm.dataLoading = true;
-            return dataService.findAll("cliente")
+            return dataService.findAllByFilter("usuario-cuenta-filter",{usuarioId:$stateParams.id})
                 .then(function(result) { 
-                    // console.log(result);
+
                     
                     if (result.success) {
-                        vm.clientes = result.data;    
+                        vm.cuentas = result.data;    
                     } else {
                         toastr.error(result.message,'Error');
                     }

@@ -5,23 +5,23 @@
         .module('app')
         .controller('registerCtrl', registerCtrl)
 
-    registerCtrl.$inject = ['$location','$auth','$rootScope','$state','toastr'];
+    registerCtrl.$inject = ['dataService','$location','$auth','$rootScope','$state','toastr','md5'];
 
-    function registerCtrl($location, $auth, $rootScope,$state,toastr) {
+    function registerCtrl(dataService,$location, $auth, $rootScope,$state,toastr,md5) {
         
         var vm = this;
         vm.userFields = [
             {
-                key: 'login',
+                key: 'usuarioNombreApellido',
                 type: 'input',
                 templateOptions: {
                     label: '',
-                    placeholder: 'Usuario',
+                    placeholder: 'Nombre y Apellido',
                     required: true
                 }
             },
             {
-                key: 'email',
+                key: 'usuarioCorreo',
                 type: 'input',
                 templateOptions: {
                     type: 'email',
@@ -31,7 +31,7 @@
                 }
             },
             {
-                key: 'password',
+                key: 'usuarioContrasenha',
                 type: 'input',
                 templateOptions: {
                     type: 'password',
@@ -49,19 +49,57 @@
                     placeholder: 'Contraseña',
                     required: true
                 }
-            }
+            },
+            {
+                
+                key: 'usuarioCategoria',
+                type: "select",
+                defaultValue:'',
+                templateOptions: {
+                    label: 'Categoría',
+                    placeholder: 'Categoría',
+                    notNull: true,
+                    required: true,
+                    options: [
+
+                        {name: 'Ahorrador', value: 1},
+                        {name: 'Economista', value: 3},
+                    ]
+                },
+            },
 
         ];
 
-        activate()
-        // vm.esAdmin = false;
-        function activate () {
-            vm.esAdmin = true;
-            return false
-            if ($auth.getPayload()?.appuserNivel == undefined) {
-                vm.esAdmin = false
+        vm.registrar = function (usuario) {
+            let usuarioCopia = angular.copy(usuario)
+
+            if (usuarioCopia.usuarioContrasenha !== usuarioCopia.password2) { 
+                console.log("first")
+                toastr.warning('Las contraseñas deben de coincidir', 'Aviso');
+                return;
             }
-             vm.esAdmin = ($auth.getPayload().appuserNivel == 1 ? true : false)
-        }
+            usuarioCopia.usuarioContrasenha = md5.createHash(usuarioCopia.usuarioContrasenha);
+            
+            vm.dataSaving = true;
+
+            
+              dataService.create('usuario', usuarioCopia)  
+                  .then(function(result) {
+                      if (result.success) {
+                          toastr.success('Usuario registrado con éxito', 'Aviso');
+                          $state.go('appSimple.login');
+                      } else {
+                          toastr.error(result.message, 'Aviso');
+                      }
+                  })
+                  .finally(function() {
+                      vm.dataSaving = false;
+                  });
+            
+              
+            
+        } 
+
+      
     }
 })();

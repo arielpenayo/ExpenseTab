@@ -15,11 +15,11 @@
       var data = {
         datasets: [{
             data: [
-                550,000,
-                800,000,
-                350,000,
-                200,000,
-                500,000
+                550.000,
+                800.000,
+                350.000,
+                200.000,
+                500.000
             ],
             backgroundColor: [
                 'rgb(255, 99, 132,0.5)',
@@ -45,17 +45,25 @@
         type: 'polarArea',
         options: {
             responsive: true,
-          legend: {
-            display: false,
-          },
+         
           layout: {
-            padding: 30,
+            padding: 10,
           },    
           scale: {
             display: true,
             // ticks: {
             //     stepSize: 50
             // }
+          },
+          legend: {
+            labels: {
+                usePointStyle: true
+             },
+             
+            display: true,
+            position:'bottom',
+            // fullSize:true,
+            align:'center'
           },
           
           
