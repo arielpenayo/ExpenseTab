@@ -7,7 +7,7 @@
                    
                     <div class="card-actions">
                         <a style="width: 80px;" role="button"
-                            ui-sref="app.maestros.transaccionRegistrar"
+                            ui-sref="app.transaccionRegistrar"
                             class="btn btn-minimize btn-light bg-transparent float-right" uib-popover="Registrar nuevo"
                             popover-trigger="'mouseenter'" popover-placement="auto left">
                             <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
@@ -34,10 +34,10 @@
                                 </td>
                             </tr>
                             <tr ng-repeat="c in vm.transacciones">
-                                <td>{{c.transaccionFecha | date:'dd/MM/yyyy'}}</td>
                                 <td text-align="center" >
-                                    <a class="text-info" ui-sref="app.maestros.transaccionEditar({ id: c.transaccionId })" >{{c.categoriaDenominacion}}</a>
+                                    <a class="text-info" ui-sref="app.transaccionEditar({ id: c.transaccionId })" >{{c.transaccionFecha | date:'dd/MM/yyyy'}}</a>
                                 </td>
+                                <td>{{c.categoriaDenominacion}}</td>
                                 <td>{{c.transaccionMonto | number}}</td>
                                 <td>
                                     <button ng-click="vm.eliminar(c.transaccionId)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>

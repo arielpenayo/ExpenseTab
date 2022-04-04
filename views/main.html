@@ -48,7 +48,7 @@
         <div class="card">
           <div class="card-header  text-white bg-info">
             <i class="fa fa-align-justify"></i> Gastos
-            <button type="button"  ui-sref="app.maestros.transaccionRegistrar" class="btn btn-minimize  btn-light float-right"
+            <button type="button"  ui-sref="app.transaccionRegistrar" class="btn btn-minimize  btn-light float-right"
                 uib-popover="Registrar nuevo" popover-trigger="'mouseenter'" popover-placement="auto left">
                 <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Gasto
             </button>
@@ -68,7 +68,7 @@
               <tbody>
                 <tr ng-repeat="c in vm.transacciones">
                   <td text-align="center" >
-                      <a class="text-info" ui-sref="app.maestros.transaccionEditar({ id: c.transaccionId })" >{{c.transaccionFecha | date:'dd/MM/yyyy'}}</a>
+                      <a class="text-info" ui-sref="app.transaccionEditar({ id: c.transaccionId })" >{{c.transaccionFecha | date:'dd/MM/yyyy'}}</a>
                   </td>
                   <td>{{c.categoriaDenominacion}}</td>
                   <td>{{c.transaccionMonto | number:0}}</td>

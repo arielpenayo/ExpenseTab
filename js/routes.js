@@ -395,7 +395,7 @@ angular
           }]
         }
       })
-      .state('app.maestros.transacciones', {
+      .state('app.transacciones', {
         url: '/transacciones',
         templateUrl: 'views/transacciones.html',
         controller: 'transaccionesCtrl',
@@ -412,7 +412,7 @@ angular
           }]
         }
       })
-      .state('app.maestros.transaccionRegistrar', {
+      .state('app.transaccionRegistrar', {
         url: '/transaccion-registrar',
         templateUrl: 'views/transaccion-form.html',
         controller: 'transaccionFormCtrl',
@@ -430,7 +430,7 @@ angular
           }]
         }
       })
-      .state('app.maestros.transaccionEditar', {
+      .state('app.transaccionEditar', {
         url: '/transaccion-editar/:id',
         templateUrl: 'views/transaccion-form.html',
         controller: 'transaccionFormCtrl',

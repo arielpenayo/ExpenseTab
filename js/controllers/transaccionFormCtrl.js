@@ -168,7 +168,7 @@
               .then(function(result) {
                   if (result.success) {
                       toastr.success('Transacción actualizado con éxito', 'Aviso');
-                      $state.go('app.maestros.transacciones');
+                      $state.go('app.transacciones');
                   } else {
                       toastr.error(result.message, 'Aviso');
                   }
@@ -181,7 +181,7 @@
                   .then(function(result) {
                       if (result.success) {
                           toastr.success('Transacción grabada con éxito', 'Aviso');
-                          $state.go('app.maestros.transacciones');
+                          $state.go('app.transacciones');
                       } else {
                           toastr.error(result.message, 'Aviso');
                       }
