@@ -83,6 +83,7 @@
             vm.dataLoading = false
             vm.esAdmin = true 
             vm.usuario = $auth.getPayload()
+            console.log('vm.usuario', vm.usuario)
             getTransacciones()
       
 

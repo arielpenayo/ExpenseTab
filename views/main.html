@@ -36,7 +36,7 @@
             
             CASOS DE USOS MAESTROS 5p (MINIMO 3 - MAXIMO 5)
             CASOS DE USOS OPERACIONES 10p (MINIMO 2 - MAXIMO 3) -->
-         <h1 class="text-center">MARZO</h1>
+         <h1 class="text-center">ABRIL</h1>
         </div>
          
           <div class="card-body  clearfix">
@@ -59,7 +59,7 @@
             <table class="table table-hover table-sm table-excel table-striped">
               <thead>
                   <tr>
-                      <th> Fecha</th>
+                    
                       <th> Categoria</th>
                       <th> Monto</th>
                       <!-- <th> Monto</th> -->
@@ -67,9 +67,9 @@
               </thead>
               <tbody>
                 <tr ng-repeat="c in vm.transacciones">
-                  <td text-align="center" >
+                  <!-- <td text-align="center" >
                       <a class="text-info" ui-sref="app.transaccionEditar({ id: c.transaccionId })" >{{c.transaccionFecha | date:'dd/MM/yyyy'}}</a>
-                  </td>
+                  </td> -->
                   <td>{{c.categoriaDenominacion}}</td>
                   <td>{{c.transaccionMonto | number:0}}</td>
                   <!-- <td>

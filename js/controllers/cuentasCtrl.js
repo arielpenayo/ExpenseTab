@@ -38,17 +38,17 @@
 
 
 			vm.confirmar = confirmar;
-			var mensaje = 'Categoría eliminada con éxito!';
+			var mensaje = 'Cuenta eliminada con éxito!';
 			vm.titulo = 'Pedido de confirmación';
 
-            vm.mensaje = 'Deseas eliminar la Categoría?';
+            vm.mensaje = 'Deseas eliminar la Cuenta?';
 			
 			
 			function confirmar() {
                 vm.dataSaving = true;
                 
 				return dataService
-					.delete('categoria', datos.cuentaUsuarioId)
+					.delete('usuario-cuenta', datos.cuentaUsuarioId)
 					.then(function(result) {
 						if (result.success) { 
 

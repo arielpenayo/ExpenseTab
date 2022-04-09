@@ -116,7 +116,7 @@
               templateOptions: {
                 type: 'input',
                 placeholder: 'Observación',
-                required: true
+                required: false
               }
             },
           
