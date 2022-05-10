@@ -466,5 +466,23 @@ angular
           }]
         }
       })
+      .state('app.asesorados', {
+        url: '/asesorados',
+        templateUrl: 'views/asesorados.html',
+        controller: 'asesoradosCtrl',
+        controllerAs: 'vm',
+        params: { subtitle: 'Asesorados' },
+        ncyBreadcrumb: {
+          label: 'Asesorados',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/asesoradosCtrl.js']
+            });
+          }]
+        }
+      })
 
   }]);

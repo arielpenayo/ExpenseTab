@@ -67,6 +67,20 @@
                     ]
                 },
             },
+            {
+                
+                key: 'usuarioObservacion',
+                type: 'textarea',
+                defaultValue:'',
+                templateOptions: {
+                    
+                    label: 'Detalles del Economista',
+                    placeholder: 'Detalles del Economista',
+                },
+                hideExpression: '(model.usuarioCategoria == 2) ? false : true' 
+            },
+            
+
 
         ];
 

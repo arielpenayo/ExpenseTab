@@ -17,14 +17,15 @@
       <li class="nav-item" >
         <a class="nav-link" ui-sref-active="active" ui-sref="app.maestros.cuentas"><i class="fa fa-credit-card" aria-hidden="true"></i>Cuentas </a>
       </li>
-      <li class="nav-item" >
-        <a class="nav-link" ui-sref-active="active" ui-sref="app.economistas"><i class="fa fa-money" aria-hidden="true"></i>Economistas </a>
-      </li>
+      
       <li class="nav-title">
-        Usuario  
+        Asesoramiento  
       </li>
-      <li class="nav-item" ng-if="vm.esAdmin">
-        <a class="nav-link" ui-sref-active="active" ui-sref="app.maestros.clientes"><i class="fa fa-user" aria-hidden="true"></i> Perfil </a>
+      <li class="nav-item"  ng-show="vm.usuario.usuarioCategoria == 1">
+        <a class="nav-link" ui-sref-active="active" ui-sref="app.economistas"><i class="fa fa-money" aria-hidden="true"></i>Economistas</a>
+      </li> 
+      <li class="nav-item" ng-show="vm.usuario.usuarioCategoria == 2">
+        <a class="nav-link" ui-sref-active="active" ui-sref="app.asesorados"><i class="fa fa-money" aria-hidden="true"></i>Asesorados</a>
       </li>
      
    

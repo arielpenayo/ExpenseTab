@@ -14,6 +14,8 @@
         // vm.esAdmin = false;
         function activate () {
             vm.esAdmin = true;
+            vm.usuario = $auth.getPayload()
+            console.log('vm.usuario', vm.usuario)
             return false
             if ($auth.getPayload()?.appuserNivel == undefined) {
                 vm.esAdmin = false
