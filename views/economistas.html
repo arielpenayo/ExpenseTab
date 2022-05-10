@@ -1,0 +1,30 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header text-white bg-info">
+                    <i class="fa fa-align-justify"></i> Economistas
+                   
+                    <div class="card-actions">
+                        <a style="width: 80px;" role="button"
+                            ui-sref="app.maestros.cuentaRegistrar"
+                            class="btn float-right text-white bg-info" uib-popover="Registrar nuevo"
+                            popover-trigger="'mouseenter'" popover-placement="auto left">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Nuevo
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body " style="overflow-x:auto;">
+                 
+                        <ul class="list-group list-group-flush" ng-repeat="c in vm.economistas">
+                          <li class="list-group-item"> 
+                            <a class="text-info"  >{{c.usuarioNombreApellido}}</a>
+                              <button ng-click="vm.solicitar(c.usuarioId)" class="btn btn-default btn-sm float-right"> Solicitar Asesoramiento</button>
+                          </li>
+                        </ul>
+                </div>
+                      
+        </div>
+    </div>
+</div>
+</div>

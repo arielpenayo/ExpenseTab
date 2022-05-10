@@ -448,6 +448,23 @@ angular
           }]
         }
       })
-    
+      .state('app.economistas', {
+        url: '/economistas',
+        templateUrl: 'views/economistas.html',
+        controller: 'economistasCtrl',
+        controllerAs: 'vm',
+        params: { subtitle: 'Economistas' },
+        ncyBreadcrumb: {
+          label: 'Economistas',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/economistasCtrl.js']
+            });
+          }]
+        }
+      })
 
   }]);

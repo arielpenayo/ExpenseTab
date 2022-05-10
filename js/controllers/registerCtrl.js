@@ -63,7 +63,7 @@
                     options: [
 
                         {name: 'Ahorrador', value: 1},
-                        {name: 'Economista', value: 3},
+                        {name: 'Economista', value: 2},
                     ]
                 },
             },
