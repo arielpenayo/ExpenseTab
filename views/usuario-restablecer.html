@@ -1,0 +1,13 @@
+<div ng-show="!vm.mensaje" class="container">
+    <form class="form-signin" ng-submit="vm.restablecerContrasena(vm.appuser)" novalidate name="vm.loginRestablecerForm">
+        <formly-form model="vm.appuser" fields="vm.loginRestablecerFields" novalidate>
+        </formly-form>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="vm.loginRestablecerForm.$invalid  || vm.dataSaving">{{ 'RESTABLECER' | translate }}</button><br>
+        <span ng-show="vm.dataSaving">  <i ng-show="vm.dataSaving" class="fa fa-circle-notch fa-spin"></i> Aguarde un momento..</span>
+
+    </form>
+</div>
+
+<div ng-show="vm.mensaje" class="text-center">
+    <strong><h2>Link Enviado</h2></strong>
+</div>

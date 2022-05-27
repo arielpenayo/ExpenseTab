@@ -98,11 +98,59 @@
             
         }
 
+        vm.cambiarEstado = function(id, operacion) {
+            var datos = {
+                id: id,
+                operacion: operacion
+            }
+            dialog = $uibModal.open({
+                templateUrl: '../../views/common/modal.html',
+				controller: ['entidad', activateModalCtrl],
+				controllerAs: 'vm',
+				resolve: {
+					entidad: function() {
+						return datos;
+					},
+				},
+			});
+        }
+
+        function activateModalCtrl(datos) {
+            var vm = this;
+            var mensaje = datos.operacion === "desactivar" ? "Solicitud rechazada" : "Solicitud aceptada con éxito!";
+            vm.confirmar = confirmar;
+            var actualizacion;
+
+            vm.titulo = 'Pedido de confirmación';
+
+            if (datos.operacion === "desactivar") {
+                vm.mensaje = 'Deseas rechazar esta solicitud?';
+                actualizacion = { usuarioAsesoradoEstado: 0 }
+            } else if (datos.operacion === "activar") {
+                vm.mensaje = 'Deseas aceptar esta solicitud?';
+                actualizacion = { usuarioAsesoradoEstado: 1 }
+            }
+
+
+            function confirmar() {
+                return dataService.update('usuario-asesorado', datos.id, actualizacion)
+                    .then(function(result) {
+                        if (result.success) {
+                            activate();
+                            dialog.close();
+                            toastr.success(mensaje, 'Aviso');
+                        } else {
+                            toastr.error(result.message);
+                        }
+
+                    });
+            }
+        }
        
 
         function getEconomistas() {
             vm.dataLoading = true;
-            return dataService.findAllByFilter("usuario-asesorado-ext-filter",{asesoradorId:vm.usuario.usuarioId})
+            return dataService.findAllByFilter("usuario-asesorado-ext-filter",{asesoradorId:vm.usuario.usuarioId,usuarioAsesoradoEstado:{$ne:0}})
                 .then(function(result) { 
 
 

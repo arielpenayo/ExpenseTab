@@ -484,5 +484,56 @@ angular
           }]
         }
       })
+      .state('app.restaurar', {
+        url: '/restaurar',
+        templateUrl: 'views/restaurar.html',
+        controller: 'restaurarCtrl',
+        controllerAs: 'vm',
+        params: { subtitle: 'restaurar' },
+        ncyBreadcrumb: {
+          label: 'restaurar',
+        },
+        resolve: {
+          loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+            
+            return $ocLazyLoad.load({
+              files: ['js/controllers/restaurarCtrl.js']
+            });
+          }]
+        }
+      })
+        // App Usuarios Activar
+        .state('appSimple.usuarioActivar', {
+          url: '/usuario-activar/:appuserEmail/:appuserHash',
+          templateUrl: 'views/activar.html',
+          controller: 'activarCtrl',
+          controllerAs: 'vm',
+          resolve: {
+              loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                  
+                  return $ocLazyLoad.load({
+                      files: ['js/controllers/activarCtrl.js']
+                  });
+              }]
+          }
+      })
+      // App Usuarios Activar
+      .state('app.asesoradosDetalles', {
+        url: '/asesorados-detalles/:id',
+        templateUrl: 'views/asesorados-detalles.html',
+        controller: 'asesoradosDetallesCtrl',
+        controllerAs: 'vm',
+        ncyBreadcrumb: {
+          label: 'Detalles de Asesorados',
+        },
+        resolve: {
+            loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                
+                return $ocLazyLoad.load({
+                    files: ['js/controllers/asesoradosDetallesCtrl.js']
+                });
+            }]
+        }
+    })
 
   }]);

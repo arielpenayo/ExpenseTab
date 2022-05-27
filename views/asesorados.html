@@ -9,8 +9,18 @@
                  
                         <ul class="list-group list-group-flush" ng-repeat="c in vm.asesorados">
                           <li class="list-group-item"> 
-                            <a class="text-info"  >{{c.asesoradoNombreApellido}}</a>
-                              <button ng-click="vm.solicitar(c.usuarioId)" class="btn btn-default btn-sm float-right"> Ver Detalles</button>
+                            
+                            <a> <span class="text-info">{{c.asesoradoNombreApellido}}</span> <br>
+                                 <small>Correo: {{c.asesoradoCorreo}}</small>
+
+                            </a>
+                                <button ng-disabled="vm.dataLoading" ng-hide="c.usuarioAsesoradoEstado != 2" class="btn btn-success pull-right" type="button" ng-click="vm.cambiarEstado(c.usuarioAsesoradoId,'activar')"> Aceptar</button>
+                                <button ng-disabled="vm.dataLoading" ng-hide="c.usuarioAsesoradoEstado != 2" class="btn btn-danger pull-right" type="button" ng-click="vm.cambiarEstado(c.usuarioAsesoradoId,'desactivar')"> Rechazar</button>
+
+                                <a ui-sref="app.asesoradosDetalles({ id: c.asesoradoId })" ng-show="c.usuarioAsesoradoEstado == 1">
+                                    <button ng-disabled="vm.dataLoading" class="btn btn-secondary pull-right" type="button"> Ver Detalles</button>
+                                </a>
+                              <!-- <button ng-click="vm.solicitar(c.usuarioId)" class="btn btn-default btn-sm float-right"> Ver Detalles</button> -->
                           </li>
                         </ul>
                 </div>
