@@ -83,7 +83,7 @@
                                                 if (result.success) {
                                                     $state.go('login');
                                                     
-                                                    toastr.success("Usuario restablecido con éxito", 'Aviso');
+                                                    // toastr.success("Usuario restablecido con éxito", 'Aviso');
                                                 } else {
                                                     toastr.warning(result.message, 'Aviso');
                                                 }
