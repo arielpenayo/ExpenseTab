@@ -184,6 +184,61 @@
                     vm.dataLoading = false;
                 });
         }
+        vm.eliminar = function(cuentaUsuarioId) {
+			var datos = {
+				cuentaUsuarioId: cuentaUsuarioId
+			};
+
+			dialog = $uibModal.open({
+                templateUrl: '../../views/common/modal.html',
+				controller: ['entidad', activateModal3Ctrl],
+				controllerAs: 'vm',
+				resolve: {
+					entidad: function() {
+						return datos;
+					},
+				},
+			});
+        };
+       
+        
+        function activateModal3Ctrl(datos) {
+            var vm = this;
+
+
+			vm.confirmar = confirmar;
+			var mensaje = 'Asesoramiento concluido con éxito!';
+			vm.titulo = 'Pedido de confirmación';
+
+            vm.mensaje = 'Deseas concluir el asesoramiento ?';
+			
+			
+			function confirmar() {
+                vm.dataSaving = true;
+                
+				return dataService
+					.delete('usuario-asesorado', datos.cuentaUsuarioId)
+					.then(function(result) {
+						if (result.success) { 
+
+                            toastr.success(mensaje, 'Aviso');
+                            vm.dataSaving = false;
+							dialog.close();
+                            activate()
+                    
+                            
+						} else {
+                            toastr.error(result.message, 'Aviso');
+							dialog.close();
+						}
+					})
+                   .catch(function(err){
+                       console.log('err :>> ', err);
+                       toastr.error(err, 'Aviso');
+                        dialog.close();
+                   })
+			}
+		}
 
         function activate() { 
             getEconomistas();

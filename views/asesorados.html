@@ -6,7 +6,9 @@
                     <i class="fa fa-align-justify"></i> Asesorados 
                 </div>
                 <div class="card-body " style="overflow-x:auto;">
-                 
+                        <div ng-if="!vm.asesorados.length">
+                            <h1>Sin Registros</h1>
+                        </div>
                         <ul class="list-group list-group-flush" ng-repeat="c in vm.asesorados">
                           <li class="list-group-item"> 
                             
@@ -14,12 +16,15 @@
                                  <small>Correo: {{c.asesoradoCorreo}}</small>
 
                             </a>
+                            <br>
+                                 <button ng-disabled="vm.dataLoading" ng-hide="c.usuarioAsesoradoEstado != 2" class="btn btn-danger pull-right" type="button" ng-click="vm.cambiarEstado(c.usuarioAsesoradoId,'desactivar')"> Rechazar</button>
                                 <button ng-disabled="vm.dataLoading" ng-hide="c.usuarioAsesoradoEstado != 2" class="btn btn-success pull-right" type="button" ng-click="vm.cambiarEstado(c.usuarioAsesoradoId,'activar')"> Aceptar</button>
-                                <button ng-disabled="vm.dataLoading" ng-hide="c.usuarioAsesoradoEstado != 2" class="btn btn-danger pull-right" type="button" ng-click="vm.cambiarEstado(c.usuarioAsesoradoId,'desactivar')"> Rechazar</button>
 
                                 <a ui-sref="app.asesoradosDetalles({ id: c.asesoradoId })" ng-show="c.usuarioAsesoradoEstado == 1">
-                                    <button ng-disabled="vm.dataLoading" class="btn btn-secondary pull-right" type="button"> Ver Detalles</button>
+                                    <button ng-disabled="vm.dataLoading" class="btn btn-info pull-right" type="button"> Ver Detalles</button>
                                 </a>
+                                <br>
+                                <button ng-disabled="vm.dataLoading" class="btn btn-danger pull-right"  ng-click="vm.eliminar(c.usuarioAsesoradoId)" ng-show="c.usuarioAsesoradoEstado == 1" type="button"> Terminar Asesoramiento</button>
                               <!-- <button ng-click="vm.solicitar(c.usuarioId)" class="btn btn-default btn-sm float-right"> Ver Detalles</button> -->
                           </li>
                         </ul>
